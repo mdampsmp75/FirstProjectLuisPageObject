@@ -8,20 +8,22 @@ import org.testng.annotations.BeforeMethod;
 public class HomePageAmazon {
 
     WebDriver driver;
+    By checkBoxSelector = By.id("twotabsearchtextbox");
+    By validateSearchSelector = By.id("nav-search-submit-button");
 
     public HomePageAmazon(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void putTextOncjeckBox (){
-        By checkBoxSelector = By.id("twotabsearchtextbox");
+    public HomePageAmazon putProductTitle (){
         driver.findElement(checkBoxSelector).sendKeys("Nintendo");
+        return this;
     }
 
-    public void validateSearchBox(){
-        By validateSearchSelector = By.id("nav-search-submit-button");
-        driver.findElement(validateSearchSelector).click();
+    public ArticlePage validateSearchBox(){
 
+        driver.findElement(validateSearchSelector).click();
+        return new ArticlePage(driver);
     }
 }
 
