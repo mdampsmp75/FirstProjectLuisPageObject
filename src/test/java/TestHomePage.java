@@ -31,13 +31,12 @@ public class TestHomePage {
         String resultatAttendu = "Nintendo";
 
         HomePageAmazon hm = new HomePageAmazon(driver);
-        hm.putProductTitle();
-        hm.validateSearchBox();
+        String a = hm
+                .putProductTitle()
+                .validateSearchBox()
+                .chooseFirstArticle();
 
-        ArticlePage ag = new ArticlePage(driver);
-        ag.chooseFirstArticle();
-
-        Assert.assertTrue(ag.chooseFirstArticle().contains(resultatAttendu),"le titre ne match pas");
+        Assert.assertTrue(a.contains(resultatAttendu),"le titre ne match pas");
 
 
     }
